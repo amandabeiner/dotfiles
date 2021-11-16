@@ -1,6 +1,9 @@
 set relativenumber
 syntax on
 
+set title
+let&titlestring='%t - vim'
+
 set tabstop=2
 set softtabstop=2
 set autoindent
@@ -22,6 +25,7 @@ call plug#begin('~/.vim/bundles')
  Plug 'morhetz/gruvbox'
  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
  Plug 'junegunn/fzf.vim'
+ Plug 'knubie/vim-kitty-navigator', {'do': 'cp ./*.py ~/.config/kitty/'}
 call plug#end()
 
 " FZF search 
