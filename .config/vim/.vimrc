@@ -32,6 +32,7 @@ call plug#begin('~/.vim/bundles')
  Plug 'jiangmiao/auto-pairs'
  Plug 'tpope/vim-commentary'
  Plug 'dense-analysis/ale'
+ Plug 'tpope/vim-surround'
 
  " Ruby
  Plug 'tpope/vim-endwise'
