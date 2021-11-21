@@ -26,7 +26,9 @@ call plug#begin('~/.vim/bundles')
  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
  Plug 'junegunn/fzf.vim'
  Plug 'knubie/vim-kitty-navigator', {'do': 'cp ./*.py ~/.config/kitty/'}
- Plug 'dhruvasagar/vim-zoom'
+
+ Plug 'jiangmiao/auto-pairs'
+
 call plug#end()
 
 " FZF search 
