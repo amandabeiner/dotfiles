@@ -22,13 +22,18 @@ end
 
 " Plugins
 call plug#begin('~/.vim/bundles')
+ " General
  Plug 'morhetz/gruvbox'
  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
  Plug 'junegunn/fzf.vim'
  Plug 'knubie/vim-kitty-navigator', {'do': 'cp ./*.py ~/.config/kitty/'}
 
+ " Language Agnostic
  Plug 'jiangmiao/auto-pairs'
  Plug 'tpope/vim-commentary'
+ Plug 'dense-analysis/ale'
+
+ " Ruby
  Plug 'tpope/vim-endwise'
 call plug#end()
 
@@ -42,3 +47,12 @@ set bg=dark
 colorscheme gruvbox
 let &t_ut=''
 highlight Normal ctermbg=NONE
+
+" Ale 
+let g:ale_linters = {
+         \ 'ruby': ['rubocop'],
+         \ }
+let g:ale_fixers = {
+        \ 'ruby': ['rubocop'],
+        \ }
+let g:ale_fix_on_save = 1
