@@ -28,7 +28,8 @@ call plug#begin('~/.vim/bundles')
  Plug 'knubie/vim-kitty-navigator', {'do': 'cp ./*.py ~/.config/kitty/'}
 
  Plug 'jiangmiao/auto-pairs'
-
+ Plug 'tpope/vim-commentary'
+ Plug 'tpope/vim-endwise'
 call plug#end()
 
 " FZF search 
