@@ -33,6 +33,7 @@ call plug#begin('~/.vim/bundles')
  Plug 'tpope/vim-commentary'
  Plug 'dense-analysis/ale'
  Plug 'tpope/vim-surround'
+ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
  " Ruby
  Plug 'tpope/vim-endwise'
@@ -57,3 +58,11 @@ let g:ale_fixers = {
         \ 'ruby': ['rubocop'],
         \ }
 let g:ale_fix_on_save = 1
+
+" CoC Settings
+let g:coc_global_extensions = [
+        \ 'coc-solargraph'
+        \ ]
+
+inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
+inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
