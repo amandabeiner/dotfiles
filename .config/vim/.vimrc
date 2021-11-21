@@ -26,6 +26,7 @@ call plug#begin('~/.vim/bundles')
  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
  Plug 'junegunn/fzf.vim'
  Plug 'knubie/vim-kitty-navigator', {'do': 'cp ./*.py ~/.config/kitty/'}
+ Plug 'dhruvasagar/vim-zoom'
 call plug#end()
 
 " FZF search 
@@ -33,6 +34,8 @@ nnoremap <silent> <leader>f :GFiles<Cr>
 nnoremap <silent> <leader>s :Rg<Cr>
 
 " Color scheme
-colorscheme gruvbox
+set termguicolors
 set bg=dark
-
+colorscheme gruvbox
+let &t_ut=''
+highlight Normal ctermbg=NONE
