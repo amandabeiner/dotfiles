@@ -11,3 +11,5 @@ alias g='git'
 alias gco='git checkout'
 alias gsta='git stash'
 alias gdiff='git diff'
+
+source /usr/local/opt/asdf/libexec/asdf.fish
