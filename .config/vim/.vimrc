@@ -1,4 +1,4 @@
-
+set relativenumber
 :let mapleader = ","
 
 " Install Vim Plug if not already installed
