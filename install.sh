@@ -16,32 +16,36 @@ get() {
 
 if [ "$CODESPACES" == "true" ]; then
         fancy_echo "In codespaces! Installing apt-get packages"
-        apt-get -y install fish fzf ripgrep git
+        apt-get -y install fish fzf ripgrep git kitty
+
+        # fancy_echo "Installing asdf"
+        # git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.1
+        fancy_echo "Installing Starship"
+        sh -c "$(curl -fsSL https://starship.rs/install.sh)"
+
+
 
         fancy_echo "Installing dotfiles"
         mv $HOME/.gitconfig $HOME/.gitconfig.old
 
-        locals=("git" "fish" "vim" "starship.toml")
+        locals=("fish" "vim" "starship.toml")
         for i in "${locals[@]}"
         do
-                ln -sf "$(pwd -P)" "$HOME/dotfiles"
+                ln -sf $(pwd -P)/.config/$i "$HOME/dotfiles"
         done
+ 
+        fancy_echo "Switching to fish"
+        chsh -s $(which fish)
 
         fancy_echo "Installing vim plugins"
         if [ -e "$HOME"/.vim/autoload/plug.vim ]; then
                 vim -E -s +PlugUpgrade +qa
         else
-                curl -fLo "$HOME"/.vim/autoload/plug.vim --create-dirs \
-                https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+                curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+                    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
         fi
         mkdir ~/.vim-tmp # add vim backup directory to prevent errors like https://stackoverflow.com/questions/8428210/cannot-create-backup-fileadd-to-overwrite
         vim +PlugUpdate +PlugClean! +qa
-
-        fancy_echo "Switching to fish"
-        if ! grep -q "root.*/bin/fish" /etc/password
-        then
-                chsh -s /bin/fish root
-        fi
 
         fancy_echo "All done"
 else
