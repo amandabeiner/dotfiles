@@ -16,20 +16,20 @@ get() {
 
 if [ "$CODESPACES" == "true" ]; then
         fancy_echo "In codespaces! Installing apt-get packages"
-        apt-get -y fzf ripgrep stow
+        apt-get -y install fish fzf ripgrep
 
         fancy_echo "Installing dotfiles"
         mv $HOME/.gitconfig $HOME/.gitconfig.old
 
-        locals=("vim" "ruby_debugger" "git" "readline" "base16-shell")
+        locals=("fish" "vim" "starship.toml")
         for i in "${locals[@]}"
         do
-                stow -t $HOME $i
+                ln -sf "$(pwd -P)" "$HOME/dotfiles"
         done
 
         fancy_echo "Installing vim plugins"
 
-        if [-e "$HOME"/.vim/autoload/plug.vim]; then
+        if [ -e "$HOME"/.vim/autoload/plug.vim ]; then
                 vim -E -s +PlugUpgrade +qa
         else
                 curl -fLo "$HOME"/.vim/autoload/plug.vim --create-dirs \
