@@ -11,11 +11,9 @@ alias gco='git checkout'
 alias gsta='git stash'
 alias gdiff='git diff'
 
-if set -q CODESPACES
-        set -x VIMINIT 'source $HOME/dotfiles/vim/.vimrc'
-        set -x TERM 'ansi'
+set -x VIMINIT 'source $HOME/.config/vim/.vimrc'
 
+if set -q CODESPACES
 else
         source /usr/local/opt/asdf/libexec/asdf.fish
-        set -x VIMINIT 'source $HOME/.config/vim/.vimrc'
 end

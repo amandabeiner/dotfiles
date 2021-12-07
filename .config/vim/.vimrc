@@ -21,7 +21,13 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 end
 
 " Plugins
-call plug#begin('~/.vim/bundles')
+let data_dir = '~/.config/vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source ~/.config/vim/.vimrc
+endif
+
+call plug#begin('~/.config/vim/bundles')
  " General
  Plug 'morhetz/gruvbox'
  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }

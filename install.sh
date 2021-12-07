@@ -10,25 +10,26 @@ function fancy_echo() {
         printf "\\n$fmt\\n" "$@"
 }
 
+
 function apt_get_packages() {
-        fancy_echo "Installing apt-get packages"
-        apt-get -y install fish fzf ripgrep git kitty
+       	fancy_echo "Installing apt-get packages"
+        apt-get -y install fish fzf ripgrep git yarn kitty
 }
 
 function install_starship() {
         fancy_echo "Installing Starship"
         curl -o starship-install.sh -fsSL https://starship.rs/install.sh
-        sudo bash starship-install.sh -y
-        ln -sf $(pwd -P)/.config/starship.toml $HOME/.config/starship.toml
-
+        bash starship-install.sh -y
 }
 
 function copy_dotfiles() {
         fancy_echo "Installing dotfiles"
-        locals=("fish" "vim" "starship.toml")
+        mkdir -p $HOME/.config
 
         ln -sf $(pwd -P)/.config/fish $HOME/.config/fish
         ln -sf $(pwd -P)/.config/vim $HOME/.config/vim
+        ln -sf $(pwd -P)/.config/kitty $HOME/.config/kitty
+        ln -sf $(pwd -P)/.config/starship.toml $HOME/.config/starship.toml
 }
 
 function change_shell() {
@@ -41,13 +42,13 @@ function install_vim_plugins() {
 
         curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
             https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-        +PlugInstall +PlugClean! +qa
+        vim +'PlugInstall --sync' +qa
+        # +PlugInstall +PlugClean! +qa
 }
 
 
 if [ "$CODESPACES" == "true" ]; then
         fancy_echo "In codespaces!"
-
         apt_get_packages
         install_starship
         copy_dotfiles
