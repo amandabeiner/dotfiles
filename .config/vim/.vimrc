@@ -10,6 +10,7 @@ set textwidth=80
 set colorcolumn=+1
 set noswapfile
 set backspace=indent,eol,start
+set term=xterm-256color
 
 :let mapleader = ","
 
