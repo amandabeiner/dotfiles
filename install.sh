@@ -13,18 +13,9 @@ function fancy_echo() {
 
 function apt_get_packages() {
        	fancy_echo "Installing apt-get packages"
-        apt-get -y install fish fzf ripgrep git yarn tmux
+        apt-get -y purge --auto-remove nodejs
+        apt-get -y install fish fzf ripgrep git nodejs npm tmux
         # kitty
-}
-
-function install_latest_node() {
-        fancy_echo "Installing latest stable node"
-        npm cache clean -f
-        npm install -g n
-        node-version=`node --version`
-        sudo ln -s "/workspaces/github/vendor/node/node-$node_version-linux-x64/lib/node_modules/n/bin/n" /usr/local/bin/
-        sudeo n stable
-
 }
 
 function install_starship() {
@@ -61,7 +52,6 @@ function install_vim_plugins() {
 if [ "$CODESPACES" == "true" ]; then
         fancy_echo "In codespaces!"
         apt_get_packages
-        install_latest_node
         install_starship
         copy_dotfiles
         change_shell
