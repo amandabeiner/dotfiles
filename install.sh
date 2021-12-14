@@ -14,8 +14,7 @@ function fancy_echo() {
 function apt_get_packages() {
        	fancy_echo "Installing apt-get packages"
         apt-get -y purge --auto-remove nodejs
-        apt-get -y install fish fzf ripgrep git nodejs npm tmux
-        # kitty
+        apt-get -y install fish fzf ripgrep git nodejs npm kitty
 }
 
 function install_starship() {
@@ -30,7 +29,7 @@ function copy_dotfiles() {
 
         ln -sf $(pwd -P)/.config/fish $HOME/.config/fish
         ln -sf $(pwd -P)/.config/vim $HOME/.config/vim
-        ln -sf $(pwd -P)/.config/tmux $HOME/.config/tmux
+        ln -sf $(pwd -P)/.config/kitty $HOME/.config/kitty
         ln -sf $(pwd -P)/.config/starship.toml $HOME/.config/starship.toml
 }
 
