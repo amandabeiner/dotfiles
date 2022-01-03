@@ -56,6 +56,8 @@ if [ "$CODESPACES" == "true" ]; then
         change_shell
         install_vim_plugins
 
+        git config --global core.editor "vim"
+
         fancy_echo "All done"
 fi
 

@@ -10,7 +10,7 @@ set textwidth=80
 set colorcolumn=+1
 set noswapfile
 set backspace=indent,eol,start
-set term=xterm-256color
+" set term=xterm-256color
 
 :let mapleader = ","
 
@@ -34,7 +34,7 @@ call plug#begin('~/.config/vim/bundles')
  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
  Plug 'junegunn/fzf.vim'
  Plug 'knubie/vim-kitty-navigator', {'do': 'cp ./*.py ~/.config/kitty/'}
- Plug 'christoomey/vim-tmux-navigator'
+ " Plug 'christoomey/vim-tmux-navigator'
 
  " Language Agnostic
  Plug 'jiangmiao/auto-pairs'
@@ -74,10 +74,10 @@ let g:coc_global_extensions = [
         \ ]
 
 " Quicker window movement
-" nnoremap <C-j> <C-w>j
-" nnoremap <C-k> <C-w>k
-" nnoremap <C-h> <C-w>h
-" nnoremap <C-l> <C-w>l
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
 inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
 inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
 syntax on
