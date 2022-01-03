@@ -33,6 +33,7 @@ call plug#begin('~/.config/vim/bundles')
  Plug 'morhetz/gruvbox'
  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
  Plug 'junegunn/fzf.vim'
+ Plug 'ojroques/vim-oscyank'
  Plug 'knubie/vim-kitty-navigator', {'do': 'cp ./*.py ~/.config/kitty/'}
  " Plug 'christoomey/vim-tmux-navigator'
 
@@ -51,6 +52,20 @@ call plug#end()
 " FZF search 
 nnoremap <silent> <leader>f :GFiles<Cr>
 nnoremap <silent> <leader>s :Rg<Cr>
+
+"  Allow me to use Ctrl-C for copying to system buffer
+if has("clipboard")
+  " copy and paste
+  vmap <C-c> "+yi
+  vmap <C-x> "+c
+  vmap <C-v> c<ESC>"+p
+  imap <C-v> <ESC>"+pa
+endif
+
+if !empty($CODESPACES)
+  " copy over ssh
+  vmap <C-c> :OSCYank<CR>
+endif
 
 " Color scheme
 set termguicolors
