@@ -35,7 +35,7 @@ call plug#begin('~/.config/vim/bundles')
  Plug 'junegunn/fzf.vim'
  Plug 'ojroques/vim-oscyank'
  Plug 'knubie/vim-kitty-navigator', {'do': 'cp ./*.py ~/.config/kitty/'}
- " Plug 'christoomey/vim-tmux-navigator'
+ Plug 'christoomey/vim-tmux-navigator'
 
  " Language Agnostic
  Plug 'jiangmiao/auto-pairs'
