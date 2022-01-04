@@ -1,6 +1,7 @@
 set title
 let&titlestring='%t - vim'
 
+set number
 set relativenumber
 set tabstop=2
 set softtabstop=2
@@ -10,7 +11,7 @@ set textwidth=80
 set colorcolumn=+1
 set noswapfile
 set backspace=indent,eol,start
-" set term=xterm-256color
+set term=xterm-256color
 
 :let mapleader = ","
 

@@ -11,6 +11,9 @@ alias gco='git checkout'
 alias gsta='git stash'
 alias gdiff='git diff'
 
+# Set terminal when SSH-ing into codespace
+alias csssh='TERM=xterm-256color gh cs ssh'
+
 set -x VIMINIT 'source $HOME/.config/vim/.vimrc'
 
 if set -q CODESPACES
