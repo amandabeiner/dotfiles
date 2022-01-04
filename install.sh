@@ -13,7 +13,6 @@ function fancy_echo() {
 
 function apt_get_packages() {
        	fancy_echo "Installing apt-get packages"
-        apt-get -y purge --auto-remove nodejs
         apt-get -y install fish fzf ripgrep git nodejs npm kitty tmux vim-gtk
 }
 
