@@ -11,14 +11,9 @@ function fancy_echo() {
 }
 
 
-function apt_get_packages() {
+function install_packages() {
        	fancy_echo "Installing apt-get packages"
-        apt-get -y install fish fzf ripgrep git nodejs npm kitty tmux vim-gtk
-}
-
-function install_starship() {
-        fancy_echo "Installing Starship"
-        curl -sS https://starship.rs/install.sh | sh
+        brew install fzf ripgrep git asdf tmux vim
 }
 
 function copy_dotfiles() {
@@ -39,16 +34,17 @@ function change_shell() {
 
 function install_vim_plugins() {
         fancy_echo "Installing vim plugins"
+        vim -Es -u $HOME/.config/vim/.vimrc -c "PlugInstall | qa"
 
-        curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-            https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-        vim +'PlugInstall --sync' +qa
+        # curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+        #     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        # vim +'PlugInstall --sync' +qa
 }
 
 
 if [ "$CODESPACES" == "true" ]; then
         fancy_echo "In codespaces!"
-        apt_get_packages
+        install_packages
         install_starship
         copy_dotfiles
         change_shell
