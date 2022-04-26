@@ -18,8 +18,7 @@ function apt_get_packages() {
 
 function install_starship() {
         fancy_echo "Installing Starship"
-        curl -o starship-install.sh -fsSL https://starship.rs/install.sh
-        bash starship-install.sh -y
+        curl -sS https://starship.rs/install.sh | sh
 }
 
 function copy_dotfiles() {
@@ -35,7 +34,7 @@ function copy_dotfiles() {
 
 function change_shell() {
         fancy_echo "Switching to fish shell"
-        chsh -s $(which fish) $(whoami)
+        sudo chsh -s $(which fish) $(whoami)
 }
 
 function install_vim_plugins() {
