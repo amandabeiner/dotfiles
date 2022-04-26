@@ -13,7 +13,7 @@ function fancy_echo() {
 
 function install_packages() {
        	fancy_echo "Installing apt-get packages"
-        brew install fzf ripgrep git asdf tmux vim
+        brew install starship fzf ripgrep git asdf tmux vim
 }
 
 function copy_dotfiles() {
