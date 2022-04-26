@@ -35,7 +35,7 @@ function copy_dotfiles() {
 
 function change_shell() {
         fancy_echo "Switching to fish shell"
-        chsh -s $(which fish)
+        chsh -s $(which fish) $(whoami)
 }
 
 function install_vim_plugins() {
@@ -59,4 +59,3 @@ if [ "$CODESPACES" == "true" ]; then
 
         fancy_echo "All done"
 fi
-
