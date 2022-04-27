@@ -20,3 +20,5 @@ if set -q CODESPACES
 else
         source /usr/local/opt/asdf/libexec/asdf.fish
 end
+
+eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)

@@ -1,0 +1,7 @@
+brew "starship"
+brew "fzf"
+brew "ripgrep"
+brew "asdf"
+brew "tmux"
+brew "vim"
+brew "thefuck"

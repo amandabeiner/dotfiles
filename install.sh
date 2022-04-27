@@ -25,6 +25,7 @@ function copy_dotfiles() {
         ln -sf $(pwd -P)/.config/kitty $HOME/.config/kitty
         ln -sf $(pwd -P)/.config/tmux $HOME/.config/tmux
         ln -sf $(pwd -P)/.config/starship.toml $HOME/.config/starship.toml
+        ln -sf $(pwd -P)/.config/Brewfile $HOME/.config/Brewfile
 }
 
 function change_shell() {
