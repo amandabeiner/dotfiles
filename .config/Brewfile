@@ -1,4 +1,3 @@
-brew "starship"
 brew "fzf"
 brew "ripgrep"
 brew "asdf"

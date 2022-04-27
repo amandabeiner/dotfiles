@@ -11,9 +11,10 @@ function fancy_echo() {
 }
 
 
-function install_packages() {
-       	fancy_echo "Installing apt-get packages"
-        brew install starship fzf ripgrep git asdf tmux vim
+function install_starship() {
+       	fancy_echo "Installing starship"
+        curl -o starship-install.sh -fsSL https://starship.rs/install.sh
+    sudo bash starship-install.sh -y
 }
 
 function copy_dotfiles() {
@@ -45,7 +46,6 @@ function install_vim_plugins() {
 
 if [ "$CODESPACES" == "true" ]; then
         fancy_echo "In codespaces!"
-        install_packages
         install_starship
         copy_dotfiles
         change_shell
