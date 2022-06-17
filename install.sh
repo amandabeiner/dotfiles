@@ -11,12 +11,6 @@ function fancy_echo() {
 }
 
 
-function install_starship() {
-       	fancy_echo "Installing starship"
-        curl -o starship-install.sh -fsSL https://starship.rs/install.sh
-    sudo bash starship-install.sh -y
-}
-
 function copy_dotfiles() {
         fancy_echo "Installing dotfiles"
         mkdir -p $HOME/.config
@@ -37,17 +31,17 @@ function change_shell() {
 function install_vim_plugins() {
         fancy_echo "Installing vim plugins"
         vim -Es -u $HOME/.config/vim/.vimrc -c "PlugInstall | qa"
-
-        # curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-        #     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-        # vim +'PlugInstall --sync' +qa
 }
 
+function brew_bundle() {
+  fancy_echo "Installing brew dependencies"
+  brew bundle --file $HOME/.config/Brewfile
+}
 
 if [ "$CODESPACES" == "true" ]; then
         fancy_echo "In codespaces!"
-        install_starship
         copy_dotfiles
+        brew_bundle
         change_shell
         install_vim_plugins
 
