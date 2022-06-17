@@ -21,4 +21,8 @@ else
         source /usr/local/opt/asdf/libexec/asdf.fish
 end
 
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+
+if test -n "$CODESPACES"
+  eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+  alias preview=\"echo https://$CODESPACE_NAME-80.githubpreview.dev\"
+end
