@@ -1,13 +1,14 @@
-set title
+et title
 let&titlestring='%t - vim'
 
 set number
 set relativenumber
 set tabstop=2
+set shiftwidth=2
 set softtabstop=2
 set autoindent
 set expandtab
-set textwidth=80
+set textwidth=118
 set colorcolumn=+1
 set noswapfile
 set backspace=indent,eol,start
@@ -16,8 +17,11 @@ set term=xterm-256color
 :let mapleader = ","
 
 
+" Handle extra whitespace
+set list listchars=tab:»·,trail:·
+autocmd BufWritePre * :%s/\s\+$//e
 
-" Install Vim Plug if not already installed
+"Install Vim Plug if not already installed
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 end
@@ -48,9 +52,12 @@ call plug#begin('~/.config/vim/bundles')
 
  " Ruby
  Plug 'tpope/vim-endwise'
+
+ " " JavaScript
+ " Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 call plug#end()
 
-" FZF search 
+" FZF search
 nnoremap <silent> <leader>f :GFiles<Cr>
 nnoremap <silent> <leader>s :Rg<Cr>
 
@@ -75,14 +82,23 @@ colorscheme gruvbox
 let &t_ut=''
 highlight Normal ctermbg=NONE
 
-" Ale 
+" Ale
 let g:ale_linters = {
          \ 'ruby': ['rubocop'],
+         \ 'javascript': ['prettier'],
+         \ 'typescript': ['prettier'],
+         \ 'typescriptreact': ['prettier'],
          \ }
 let g:ale_fixers = {
+        \ '*': ['remove_trailing_lines', 'trim_whitespace'],
         \ 'ruby': ['rubocop'],
+        \ 'javascript': ['prettier'],
+        \ 'typescript': ['prettier'],
+        \ 'typescriptreact': ['prettier'],
         \ }
+
 let g:ale_fix_on_save = 1
+" let g:ale_javascript_prettier_use_local_config = 1
 
 " CoC Settings
 let g:coc_global_extensions = [
@@ -97,4 +113,3 @@ nnoremap <C-l> <C-w>l
 inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
 inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
 syntax on
-
