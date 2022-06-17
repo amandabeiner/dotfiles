@@ -1,4 +1,4 @@
-et title
+set title
 let&titlestring='%t - vim'
 
 set number
