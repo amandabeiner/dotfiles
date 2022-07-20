@@ -16,13 +16,9 @@ alias csssh='TERM=xterm-256color gh cs ssh'
 
 set -x VIMINIT 'source $HOME/.config/vim/.vimrc'
 
-if set -q CODESPACES
-else
-        source /usr/local/opt/asdf/libexec/asdf.fish
-end
-
-
 if test -n "$CODESPACES"
   eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-  alias preview=\"echo https://$CODESPACE_NAME-80.githubpreview.dev\"
+  alias preview="echo https://$CODESPACE_NAME-80.githubpreview.dev"
 end
+
+source /usr/local/opt/asdf/libexec/asdf.fish
