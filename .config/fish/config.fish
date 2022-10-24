@@ -11,6 +11,9 @@ alias gco='git checkout'
 alias gsta='git stash'
 alias gdiff='git diff'
 
+# Dotcom helpers
+alias aaq='AUTOCORRECT_ALLOWED_QUERIES=1'
+
 # Set terminal when SSH-ing into codespace
 alias csssh='TERM=xterm-256color gh cs ssh'
 
