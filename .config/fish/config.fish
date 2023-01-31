@@ -2,7 +2,6 @@ if status --is-interactive
     # Commands to run in interactive sessions can go here
 end
 
-starship init fish | source
 alias config='/usr/bin/git --git-dir=$HOME/.myconfig/ --work-tree=$HOME'
 
 # Git shortcuts
@@ -24,4 +23,4 @@ if test -n "$CODESPACES"
   alias preview="echo https://$CODESPACE_NAME-80.githubpreview.dev"
 end
 
-source /usr/local/opt/asdf/libexec/asdf.fish
+starship init fish | source
