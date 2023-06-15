@@ -1,4 +1,3 @@
-
 call plug#begin('~/.config/vim/bundles')
  Plug 'dense-analysis/ale' " Linting
  Plug 'morhetz/gruvbox' " Color scheme
@@ -18,12 +17,20 @@ syntax on
 
 set title
 
+" General
+set noswapfile
+let mapleader = ","
+set termguicolors
+set bg=dark
+colorscheme gruvbox
+let &t_ut='' " Draw background correctly when using tmux
+
 " Search settings
 set hlsearch " highlight search results
 set incsearch " start search before pressing enter
 set ignorecase " make searches case insensitive
 " clear highlights
-nnoremap <Leader><space> :nohlsearch<CR>
+nnoremap <leader><Space> :nohl<CR>
 
 " Indentation
 set smartindent
@@ -44,16 +51,11 @@ set cursorline
 set backspace=indent,eol,start
 
 " Whitespace
+" Support the characters that denote extra whitespace
+scriptencoding utf-8
+set encoding=utf-8
 set list listchars=tab:»·,trail:·
 autocmd BufWritePre * :%s/\s\+$//e
-
-" General
-set noswapfile
-let mapleader = ","
-set termguicolors
-set bg=dark
-colorscheme gruvbox
-let &t_ut='' " Draw background correctly when using tmux
 
 " FZF search
 nnoremap <silent> <leader>f :GFiles<Cr>
@@ -86,37 +88,19 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
-""Install Vim Plug if not already installed
-"if empty(glob('~/.vim/autoload/plug.vim'))
-"  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-"end
+" Ale
+let g:ale_linters = {
+         \ 'ruby': ['rubocop'],
+         \ 'javascript': ['prettier'],
+         \ 'typescript': ['prettier'],
+         \ 'typescriptreact': ['prettier'],
+         \ }
+let g:ale_fixers = {
+        \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+        \ 'ruby': ['rubocop'],
+        \ 'javascript': ['prettier'],
+        \ 'typescript': ['prettier'],
+        \ 'typescriptreact': ['prettier'],
+        \ }
 
-"" Plugins
-"let data_dir = '~/.config/vim'
-"if empty(glob(data_dir . '/autoload/plug.vim'))
-"  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-"  autocmd VimEnter * PlugInstall --sync | source ~/.config/vim/.vimrc
-"endif
-
-
-" Color scheme
-" highlight Normal ctermbg=NONE
-
-" " Ale
-" let g:ale_linters = {
-"          \ 'ruby': ['rubocop'],
-"          \ 'javascript': ['prettier'],
-"          \ 'typescript': ['prettier'],
-"          \ 'typescriptreact': ['prettier'],
-"          \ }
-" let g:ale_fixers = {
-"         \ '*': ['remove_trailing_lines', 'trim_whitespace'],
-"         \ 'ruby': ['rubocop'],
-"         \ 'javascript': ['prettier'],
-"         \ 'typescript': ['prettier'],
-"         \ 'typescriptreact': ['prettier'],
-"         \ }
-
-" let g:ale_fix_on_save = 1
-" let g:ale_javascript_prettier_use_local_config = 1
-
+let g:ale_fix_on_save = 1
