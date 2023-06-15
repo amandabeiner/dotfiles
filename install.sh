@@ -36,7 +36,7 @@ function install_vim_plugins() {
 
 function brew_bundle() {
   fancy_echo "Installing brew dependencies"
-  brew bundle --file $HOME/.config/Brewfile
+  /home/linuxbrew/.linuxbrew/bin/brew bundle --file $HOME/.config/Brewfile
 }
 
 if [ "$CODESPACES" == "true" ]; then
