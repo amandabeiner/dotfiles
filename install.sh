@@ -29,7 +29,8 @@ function change_shell() {
 }
 
 function install_vim_plugins() {
-        fancy_echo "Installing vim plugins"
+        fancy_echo "Installing Plug and vim plugins"
+        curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
         vim -Es -u $HOME/.config/vim/.vimrc -c "PlugInstall | qa"
 }
 

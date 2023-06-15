@@ -4,7 +4,7 @@ call plug#begin('~/.config/vim/bundles')
  Plug 'morhetz/gruvbox' " Color scheme
  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
  Plug 'junegunn/fzf.vim' " Better search
- Plug 'roman/goldent-ratio' " Resizes windows
+ Plug 'roman/golden-ratio' " Resizes windows
  Plug 'scrooloose/nerdtree' " File tree
  Plug 'tpope/vim-fugitive' " Git plugin
  Plug 'tpope/vim-commentary' " Commenting and such
@@ -22,6 +22,8 @@ set title
 set hlsearch " highlight search results
 set incsearch " start search before pressing enter
 set ignorecase " make searches case insensitive
+" clear highlights
+nnoremap <Leader><space> :nohlsearch<CR>
 
 " Indentation
 set smartindent
